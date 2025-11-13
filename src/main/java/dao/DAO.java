@@ -22,7 +22,7 @@ public interface DAO<T> {
      * @param t Entidad a actualizar.
      * @return Entidad actualizada envuelta en Optional, o vacío si no se pudo actualizar.
      */
-    Optional<T> updateGenero(T t);
+    Optional<T> updateGenero(T t, String genero);
 
 
     /**
@@ -30,8 +30,5 @@ public interface DAO<T> {
      * @return Lista de todas las entidades.
      */
     List<T> getAll();
-
-
-
 
 }

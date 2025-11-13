@@ -76,16 +76,14 @@ public class PeliculaDAO implements DAO<Pelicula> {
 
 
     @Override
-    public Optional<Pelicula> updateGenero(Pelicula pelicula) {
-        final String sql = "UPDATE pelicula SET titulo = ?, genero = ?, año = ? WHERE id = ?";
+    public Optional<Pelicula> updateGenero(Pelicula pelicula, String genero) {
+        final String sql = "UPDATE pelicula SET genero = ? WHERE genero = ?";
 
         try (Connection conn = ds.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql))
         {
-            pstmt.setString(1, pelicula.getTitulo());
-            pstmt.setString(2, pelicula.getGenero());
-            pstmt.setInt(3, pelicula.getAnio());
-            pstmt.setInt(4, pelicula.getId());
+            pstmt.setString(1, pelicula.getGenero());
+            pstmt.setString(2, genero);
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -97,7 +95,8 @@ public class PeliculaDAO implements DAO<Pelicula> {
         } catch (Exception e) {
             logger.severe("Error al actualizar la pelicula: " + e.getMessage());
         }
-        return Optional.empty();    }
+        return Optional.empty();
+    }
 
 
 
