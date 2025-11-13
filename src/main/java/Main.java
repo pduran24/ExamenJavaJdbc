@@ -19,5 +19,6 @@ public class Main {
 
 
         System.out.println("Tamaño de la lista: "+PeliculasUtils.tamanioPeliculas(pdao.getAll()));
+
     }
 }
