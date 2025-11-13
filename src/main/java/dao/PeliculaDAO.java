@@ -114,7 +114,7 @@ public class PeliculaDAO implements DAO<Pelicula> {
              PreparedStatement pstmt = conn.prepareStatement(sql))
         {
             pstmt.setString(1, genero);
-            pstmt.setString(1, genero2);
+            pstmt.setString(2, genero2);
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
